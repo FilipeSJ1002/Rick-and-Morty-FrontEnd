@@ -16,23 +16,29 @@ function Characters() {
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
 
+    // Verificação de autenticação do usuario
     if(!token){
         alertToast('Usuário não autenticado. Faça login para continuar.', '', 'error');
         navigate('/login');
     };
 
+    // Avançar personagem da lista
     const nextCharacter = async () => {
         if (currentCharacterIndex < characters.length - 1) {
             setCurrentCharacterIndex(currentCharacterIndex + 1);
+        } else {
+            alertToast('Último personagem da lista.', '', 'info');
         }
     };
-
+    // Voltar personagem da lista
     const previousCharacter = () => {
         if (currentCharacterIndex > 0) {
             setCurrentCharacterIndex(currentCharacterIndex - 1);
+        } else {
+            alertToast('Primeiro personagem da lista.', '', 'info');
         }
     };
-
+    // Buscar personagem
     const fetchCharacter = async () => {
         try {
             setError('');
@@ -52,12 +58,27 @@ function Characters() {
     };
 
     const character = characters[currentCharacterIndex];
-
+    
+    // Voltar para fazer nova busca
     const searchAgain = async () => {
         setCharacters([]);
         setCurrentCharacterIndex(0);
         setNameCharacter('');
     };
+
+    // Alterando a falta de dados (unknown) para Desconhecido
+    const dataName = () => {
+        return character.name === 'unknown' ? 'Desconhecido' : character.name;
+    };
+    const dataStatus = () => {
+        return character.status === 'unknown' ? 'Desconhecido' : character.status;
+    };
+    const dataSpecies = () => {
+        return character.species === 'unknown' ? 'Desconhecido' : character.species;
+    };
+    const dataLocation = () => {
+        return character.location === 'unknown' ? 'Desconhecido' : character.location;
+    };    
 
 
     return (
@@ -87,11 +108,11 @@ function Characters() {
                                     <Image boxSize={'2xs'} src={character.image} borderRadius="md" />
                                 </Box>
                                 <Box>
-                                    <Text fontSize="3xl" fontFamily={"'Creepster', cursive"} fontWeight="bold">{character.name}</Text>
+                                    <Text fontSize="3xl" fontFamily={"'Creepster', cursive"} fontWeight="bold">{dataName()}</Text>
                                     <Box as={'ul'} listStyleType={'inherit'}>
-                                        <Text as={'li'}>Status: {character.status}</Text>
-                                        <Text as={'li'}>Espécie: {character.species}</Text>
-                                        <Text as={'li'}>Localização: {character.location}</Text>
+                                        <Text as={'li'}>Status: {dataStatus()}</Text>
+                                        <Text as={'li'}>Espécie: {dataSpecies()}</Text>
+                                        <Text as={'li'}>Localização: {dataLocation()}</Text>
                                     </Box>
                                 </Box>
                             </HStack>

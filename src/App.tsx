@@ -16,7 +16,7 @@ function App() {
 
   return (
     <Box color={'white'} fontWeight="bold" backgroundColor={"black"} backgroundImage={`url(${portalGif})`} backgroundSize="contain" 
-    backgroundPosition="center" backgroundRepeat="no-repeat" minHeight="100vh">
+    backgroundPosition="center" backgroundRepeat="no-repeat" minHeight="100vh"> {/*Configuração do fundo do site*/}
       <Box>
         <TitleRM/>
       </Box>

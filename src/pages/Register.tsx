@@ -1,20 +1,16 @@
-import { AbsoluteCenter, Box, Center, Flex, HStack, Link, Text } from "@chakra-ui/react";
+import { AbsoluteCenter, Box, Center, Flex, HStack, Text } from "@chakra-ui/react";
 import ButtonConfig from "../components/ButtonConfig";
 import InputConfig from "../components/InputConfig";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useAuth } from "../contexts/AuthContext";
 import useAlertToast from "../components/toastUtils";
 
 function Register(){
     const [nameInputValue, setNameInputValue] = useState('');
     const [emailInputValue, setEmailInputValue] = useState('');
-    const [emailLoginInputValue, setEmailLoginInputValue] = useState('');
-    const [passwordLoginInputValue, setPasswordLoginInputValue] = useState('');
     const [passwordInputValue, setPasswordInputValue] = useState('');
     const [cofirmPasswordInputValue, setCofirmPasswordInputValue] = useState('');
-    const {setIsAuthenticated, setToken} = useAuth()
     const { alertToast } = useAlertToast();
     const navigate = useNavigate()
 
@@ -26,10 +22,9 @@ function Register(){
         navigate('/login')
     }
 
-
     const [loading, setLoading] = useState(false);
-    const [loadingLogin, setLoadingLogin] = useState(false);
 
+    // Registro de novo usuario
     const registerSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         setLoading(true);

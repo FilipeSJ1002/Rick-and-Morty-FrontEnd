@@ -2,7 +2,6 @@ import { AbsoluteCenter, Box, Center, Flex, HStack, Text, VStack } from "@chakra
 import ButtonConfig from "../components/ButtonConfig";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import TitleRM from "../components/TitleRM";
 
 function Home() {
     const navigate = useNavigate();

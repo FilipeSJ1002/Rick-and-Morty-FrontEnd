@@ -1,4 +1,4 @@
-import { AbsoluteCenter, Box, Center, Flex, Text, Input, Button } from "@chakra-ui/react";
+import { AbsoluteCenter, Box, Center, Flex, Text } from "@chakra-ui/react";
 import Footer from "../components/ReturnHome";
 import { useState } from "react";
 import InputConfig from "../components/InputConfig";
@@ -23,18 +23,17 @@ function UserEdit() {
     const goToHome = () => {
         navigate('/');
     }
-    
     const noPassword = () => {
         alertToast('Senhas não conferem', '', 'error');
     }
-    
+
+    // Envio das atulizações do cadastro
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const updatedData = {
             name: newName || undefined, 
             password: newPassword || undefined, 
         };
-    
         try {
             await axios.patch(`${import.meta.env.VITE_API_BASE_URL}/users/${userId}/update`, updatedData);
             alertToast('Cadastro atualizado!', '', 'success');
@@ -44,16 +43,14 @@ function UserEdit() {
         }
     };
     
-
+    // Login de checagem antes das alterações do perfil
     const loginSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         const userData = {
             email: emailLoginInputValue,
             password: passwordLoginInputValue
         };
-
         try {
-            const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/login`, userData);
             const dataBase = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/info-login`, userData);
             const dataId = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/info-login-id`, userData);
             const user = {
