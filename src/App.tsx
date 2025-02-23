@@ -14,7 +14,7 @@ import TitleRM from './components/TitleRM';
 function App() {
 
   return (
-    <Box color={'white'} fontWeight="bold" backgroundColor={"black"} backgroundImage="./src/assets//portal-rick-and-morty.gif"  backgroundSize="contain" 
+    <Box color={'white'} fontWeight="bold" backgroundColor={"black"} backgroundImage="./src/assets//portal-rick-and-morty.png"  backgroundSize="contain" 
     backgroundPosition="center" backgroundRepeat="no-repeat" minHeight="100vh">
       <Box>
         <TitleRM/>

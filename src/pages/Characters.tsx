@@ -36,7 +36,7 @@ function Characters() {
     const fetchCharacter = async () => {
         try {
             setError('');
-            const response = await axios.get(`http://localhost:3000/characters/${nameCharacter}`, {
+            const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/characters/${nameCharacter}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
