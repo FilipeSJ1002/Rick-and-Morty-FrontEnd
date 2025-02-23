@@ -10,11 +10,12 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Characters from './pages/Characters';
 import TitleRM from './components/TitleRM';
+import portalGif from "./public/portal-rick-and-morty.gif";
 
 function App() {
 
   return (
-    <Box color={'white'} fontWeight="bold" backgroundColor={"black"} backgroundImage="./src/public//portal-rick-and-morty.gif"  backgroundSize="contain" 
+    <Box color={'white'} fontWeight="bold" backgroundColor={"black"} backgroundImage={`url(${portalGif})`} backgroundSize="contain" 
     backgroundPosition="center" backgroundRepeat="no-repeat" minHeight="100vh">
       <Box>
         <TitleRM/>
